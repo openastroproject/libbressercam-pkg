@@ -1,0 +1,21 @@
+Source: libbressercam
+Priority: optional
+Maintainer: James Fidell <james@openastroproject.org>
+Build-Depends: debhelper (>=@@COMPAT@@)
+Standards-Version: 4.1.4
+Section: libs
+
+Package: libbressercam
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Bresser camera interface library
+ Userspace library for connecting to Bresser astronomy cameras
+
+Package: libbressercam-dev
+Section: libdevel
+Architecture: any
+Depends: libbressercam (= ${binary:Version}), ${misc:Depends}
+Description: Bresser camera interface library development files
+ Development headers for libbressercam, a userspace library for controlling
+ Bresser astronomy cameras

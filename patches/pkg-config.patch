@@ -1,0 +1,12 @@
+Create libbressercam pkg-config file template
+--- libbressercam.pc.in	1970-01-01 01:00:00.000000000 +0100
++++ libbressercam.pc.in	2016-11-05 23:11:43.247858211 +0000
+@@ -0,0 +1,8 @@
++libdir=@LIBDIR@
++includedir=/usr/include
++
++Name: libbressercam
++Description: Bresser camera interface library
++Version: @VERSION@
++Libs: -L${libdir} -lbressercam
++Cflags: -I${includedir}

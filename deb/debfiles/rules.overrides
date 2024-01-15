@@ -1,0 +1,26 @@
+VERSION=1.55.24239
+
+override_dh_auto_build:
+	dh_auto_build -- LIBDIR=/usr/lib/$(DEB_HOST_MULTIARCH) VERSION=DEBVERSION
+
+override_dh_auto_install:
+	case $(DEB_BUILD_ARCH) in \
+		i386) \
+			ln x86/libbressercam.bin x86/libbressercam.so; \
+			ln x86/libbressercam.bin x86/libbressercam.so.$(VERSION);; \
+		amd64) \
+			ln x64/libbressercam.bin x64/libbressercam.so; \
+			ln x64/libbressercam.bin x64/libbressercam.so.$(VERSION);; \
+		aarch64) \
+			ln arm64/libbressercam.bin arm64/libbressercam.so; \
+			ln arm64/libbressercam.bin arm64/libbressercam.so.$(VERSION);; \
+		armhf) \
+			ln armhf/libbressercam.bin armhf/libbressercam.so; \
+			ln armhf/libbressercam.bin armhf/libbressercam.so.$(VERSION);; \
+	esac
+	dh_auto_install -- SRCDIR=$(CURDIR) ARCH=$(DEB_TARGET_ARCH) \
+		INCDIR=$(CURDIR)/debian/tmp/usr/include \
+		LIBDIR=$(CURDIR)/debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH) \
+		PKGCONFDIR=$(CURDIR)/debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig \
+		UDEVDIR=$(CURDIR)/debian/tmp/lib/udev/rules.d \
+		VERSION=DEBVERSION MAJOR_REV=1
