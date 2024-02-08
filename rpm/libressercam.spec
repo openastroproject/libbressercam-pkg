@@ -1,13 +1,13 @@
 %define debug_package %{nil}
 
 Name:           libbressercam
-Version:        1.55.24239
+Version:        1.55.24621
 Release:        0
 Summary:        Bresser camera support library
 License:	GPLv2+
 Prefix:         %{_prefix}
 Provides:       libbressercam = %{version}-%{release}
-Obsoletes:      libbressercam < 1.55.24239
+Obsoletes:      libbressercam < 1.55.24621
 Source:         libbressercam-%{version}.tar.gz
 Patch0:         pkg-config.patch
 Patch1:         udev-rules.patch
@@ -20,7 +20,7 @@ Summary:        Development files for %{name}
 Group:          Development/Libraries
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 Provides:       libbressercam-devel = %{version}-%{release}
-Obsoletes:      libbressercam-devel < 1.55.24239
+Obsoletes:      libbressercam-devel < 1.55.24621
 
 %description    devel
 The %{name}-devel package contains libraries and header files for
@@ -43,7 +43,7 @@ mkdir -p %{buildroot}%{_includedir}
 
 case %{_arch} in
   x86_64)
-    cp x64/libbressercam.bin %{buildroot}%{_libdir}/libbressercam.so.%{version}
+    cp x64/libbressercam.so %{buildroot}%{_libdir}/libbressercam.so.%{version}
 		cp bressercam.h %{buildroot}%{_includedir}
     ;;
   *)
@@ -73,6 +73,8 @@ cp 70-bresser-cameras.rules %{buildroot}/etc/udev/rules.d
 %{_libdir}/pkgconfig/*.pc
 
 %changelog
+* Thu Feb 8 2024 James Fidell <james@openastroproject.org> - 1.55.24621-0
+- Initial RPM release
 * Sat Jan 6 2024 James Fidell <james@openastroproject.org> - 1.55.24239-0
 - Initial RPM release
 

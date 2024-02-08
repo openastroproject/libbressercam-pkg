@@ -1,3 +1,9 @@
+libbressercam (1.55.24621-1) jammy; urgency=medium
+
+  * Updates from upstream
+
+ -- James Fidell <james@openastroproject.org>  Thu, 8 Feb 2024 13:00:00 +0000
+
 libbressercam (1.55.24239-1) jammy; urgency=medium
 
   * Initial release
